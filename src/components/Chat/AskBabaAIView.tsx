@@ -18,21 +18,24 @@ import {
   RefreshCw
 } from 'lucide-react';
 import { StatusBar } from '../Common/StatusBar';
-import { AskBabaAIMessage } from '../../types';
+import { AskBabaAIMessage, Language } from '../../types';
 import { tts } from '../../utils/tts';
 import { sound } from '../../utils/audio';
 import { generateOfflineBabaAnswer } from '../../services/babaAIService';
+import { getTranslation } from '../../utils/translations';
 
 interface AskBabaAIViewProps {
   onBack: () => void;
   onSetSankalp?: (sankalp: string) => void;
   onSaveToJournal?: (text: string) => void;
+  language?: Language;
 }
 
 export const AskBabaAIView: React.FC<AskBabaAIViewProps> = ({
   onBack,
   onSetSankalp,
-  onSaveToJournal
+  onSaveToJournal,
+  language = 'en'
 }) => {
   const [query, setQuery] = useState<string>('');
   const [messages, setMessages] = useState<AskBabaAIMessage[]>([]);
@@ -44,13 +47,66 @@ export const AskBabaAIView: React.FC<AskBabaAIViewProps> = ({
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   const popularInsights = [
-    { id: 'calm', icon: '🪷', text: 'How to stay calm in challenging situations?' },
-    { id: 'anger', icon: '❤️', text: 'How to overcome anger?' },
-    { id: 'happiness', icon: '☀️', text: 'What is true happiness?' },
-    { id: 'soul', icon: '🧘', text: 'How do I practise soul consciousness?' },
-    { id: 'thoughts', icon: '🕊️', text: 'How can I control waste thoughts?' },
-    { id: 'amritvela', icon: '☀️', text: 'How can I improve my Amritvela?' },
-    { id: 'mind_intellect', icon: '💎', text: 'What is the difference between mind and intellect?' }
+    {
+      id: 'calm',
+      icon: '🪷',
+      text:
+        language === 'pa'
+          ? 'ਮੁਸ਼ਕਲ ਹਾਲਾਤਾਂ ਵਿੱਚ ਸ਼ਾਂਤ ਕਿਵੇਂ ਰਹੀਏ?'
+          : language === 'hi'
+          ? 'कठिन परिस्थितियों में शांत कैसे रहें?'
+          : 'How to stay calm in challenging situations?'
+    },
+    {
+      id: 'anger',
+      icon: '❤️',
+      text:
+        language === 'pa'
+          ? 'ਗੁੱਸੇ ਤੇ ਖਿਝ ਉੱਤੇ ਕਾਬੂ ਕਿਵੇਂ ਪਾਈਏ?'
+          : language === 'hi'
+          ? 'क्रोध और चिड़चिड़ेपन पर विजय कैसे पाएं?'
+          : 'How to overcome anger?'
+    },
+    {
+      id: 'soul',
+      icon: '🧘',
+      text:
+        language === 'pa'
+          ? 'ਆਤਮਿਕ ਸਥਿਤੀ ਦਾ ਅਭਿਆਸ ਕਿਵੇਂ ਕਰੀਏ?'
+          : language === 'hi'
+          ? 'आत्म-अभिमानी स्थिति का अभ्यास कैसे करें?'
+          : 'How do I practise soul consciousness?'
+    },
+    {
+      id: 'thoughts',
+      icon: '🕊️',
+      text:
+        language === 'pa'
+          ? 'ਵਿਅਰਥ ਸੰਕਲਪਾਂ ਨੂੰ ਕਿਵੇਂ ਰੋਕੀਏ?'
+          : language === 'hi'
+          ? 'व्यर्थ संकल्पों को कैसे रोकें?'
+          : 'How can I control waste thoughts?'
+    },
+    {
+      id: 'amritvela',
+      icon: '☀️',
+      text:
+        language === 'pa'
+          ? 'ਅੰਮ੍ਰਿਤਵੇਲਾ ਯੋਗ ਕਿਵੇਂ ਸ਼ਕਤੀਸ਼ਾਲੀ ਬਣਾਈਏ?'
+          : language === 'hi'
+          ? 'अमृतवेला योग को शक्तिशाली कैसे बनाएं?'
+          : 'How can I improve my Amritvela?'
+    },
+    {
+      id: 'mind_intellect',
+      icon: '💎',
+      text:
+        language === 'pa'
+          ? 'ਮਨ ਅਤੇ ਬੁੱਧੀ ਵਿੱਚ ਕੀ ਅੰਤਰ ਹੈ?'
+          : language === 'hi'
+          ? 'मन और बुद्धि में क्या अंतर है?'
+          : 'What is the difference between mind and intellect?'
+    }
   ];
 
   // Scroll to bottom on new message
@@ -76,7 +132,7 @@ export const AskBabaAIView: React.FC<AskBabaAIViewProps> = ({
 
     try {
       const recognition = new SpeechRecognition();
-      recognition.lang = 'hi-IN';
+      recognition.lang = language === 'pa' ? 'pa-IN' : language === 'hi' ? 'hi-IN' : 'en-US';
       recognition.interimResults = false;
       recognition.maxAlternatives = 1;
 

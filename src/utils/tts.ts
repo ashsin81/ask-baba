@@ -1,4 +1,5 @@
 // Browser Web Speech API synthesizer for Text-to-Speech (TTS) with Chrome/Safari bug fixes
+import { Language } from '../types';
 
 class TextToSpeechService {
   private synth: SpeechSynthesis | null = null;
@@ -37,7 +38,7 @@ class TextToSpeechService {
     this.onStateChangeListeners.forEach((l) => l(speaking, text));
   }
 
-  public speak(text: string, lang: 'hi' | 'en' | 'hinglish' = 'hi', rate: number = 0.92) {
+  public speak(text: string, lang: Language = 'hi', rate: number = 0.92) {
     if (!this.synth) {
       alert('आपके ब्राउज़र में Text-to-Speech (आवाज़) उपलब्ध नहीं है।');
       return;
@@ -79,6 +80,22 @@ class TextToSpeechService {
         );
         if (enVoice) utterance.voice = enVoice;
         utterance.lang = 'en-IN';
+      } else if (lang === 'pa') {
+        const paVoice = voices.find(
+          (v) =>
+            v.lang.startsWith('pa') ||
+            v.name.toLowerCase().includes('punjabi') ||
+            v.name.toLowerCase().includes('gurmukhi')
+        );
+        if (paVoice) {
+          utterance.voice = paVoice;
+          utterance.lang = 'pa-IN';
+        } else {
+          // Fallback to Hindi voice which speaks Indic phonetics cleanly
+          const hiVoice = voices.find((v) => v.lang.startsWith('hi'));
+          if (hiVoice) utterance.voice = hiVoice;
+          utterance.lang = 'hi-IN';
+        }
       } else {
         // Hindi & Hinglish
         const hiVoice = voices.find(
@@ -126,7 +143,7 @@ class TextToSpeechService {
     }
   }
 
-  public toggle(text: string, lang: 'hi' | 'en' | 'hinglish' = 'hi', rate: number = 0.92) {
+  public toggle(text: string, lang: Language = 'hi', rate: number = 0.92) {
     if (this.isCurrentlySpeaking) {
       this.stop();
     } else {

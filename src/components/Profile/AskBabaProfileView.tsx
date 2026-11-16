@@ -24,12 +24,14 @@ interface AskBabaProfileViewProps {
   profile: UserProfile;
   onUpdateProfile: (updated: Partial<UserProfile>) => void;
   onResetData: () => void;
+  onRetakeOnboarding?: () => void;
 }
 
 export const AskBabaProfileView: React.FC<AskBabaProfileViewProps> = ({
   profile,
   onUpdateProfile,
-  onResetData
+  onResetData,
+  onRetakeOnboarding
 }) => {
   const [activeModal, setActiveModal] = useState<'achievements' | 'goals' | 'notifications' | 'settings' | 'about' | null>(null);
 
@@ -250,12 +252,12 @@ export const AskBabaProfileView: React.FC<AskBabaProfileViewProps> = ({
 
               {/* Language Selection */}
               <div className="space-y-1">
-                <label className="font-bold text-[#302B2B]">Language</label>
+                <label className="font-bold text-[#302B2B]">App Language / भाषा / ਭਾਸ਼ਾ</label>
                 <div className="grid grid-cols-3 gap-2">
                   {[
                     { id: 'en', label: 'English' },
                     { id: 'hi', label: 'हिन्दी' },
-                    { id: 'hinglish', label: 'Hinglish' }
+                    { id: 'pa', label: 'ਪੰਜਾਬੀ' }
                   ].map((l) => (
                     <button
                       key={l.id}
@@ -297,6 +299,21 @@ export const AskBabaProfileView: React.FC<AskBabaProfileViewProps> = ({
                   ))}
                 </div>
               </div>
+
+              {/* Retake Onboarding */}
+              {onRetakeOnboarding && (
+                <div className="pt-2 border-t border-[#DFC896]/30">
+                  <button
+                    onClick={() => {
+                      setActiveModal(null);
+                      onRetakeOnboarding();
+                    }}
+                    className="w-full py-2.5 rounded-xl bg-white border border-[#DFC896] text-[#711D35] font-bold text-xs hover:bg-[#FAF4EB] transition"
+                  >
+                    🔄 Restart Onboarding Walkthrough
+                  </button>
+                </div>
+              )}
             </div>
 
             <button

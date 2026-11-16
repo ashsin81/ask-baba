@@ -13,14 +13,19 @@ export const TODAY_PURUSHARTH_DATA: TodayPurusharth = {
   id: 'purusharth-today',
   theme: 'Become the Master of Your Mind',
   themeHi: 'स्वराज्य अधिकारी: मन के मालिक बनो',
+  themePa: 'ਸਵਰਾਜ ਅਧਿਕਾਰੀ: ਮਨ ਦੇ ਮਾਲਕ ਬਣੋ',
   thought: 'My mind is my instrument. I am the soul, the conscious being who directs my thoughts.',
   thoughtHi: 'मन मेरी कर्मेन्द्रिय है। मैं आत्मा, इस मन की मालिक व निर्देशक हूँ।',
+  thoughtPa: 'ਮਨ ਮੇਰੀ ਕਰਮ-ਇੰਦਰੀ ਹੈ। ਮੈਂ ਆਤਮਾ, ਇਸ ਮਨ ਦੀ ਮਾਲਕ ਤੇ ਨਿਰਦੇਸ਼ਕ ਹਾਂ।',
   practice: 'Pause three times today and consciously create a peaceful thought.',
   practiceHi: 'दिन में 3 बार रुकें और सजग होकर केवल शांत स्वरूप का एक संकल्प रचें।',
+  practicePa: 'ਦਿਨ ਵਿੱਚ 3 ਵਾਰ ਰੁਕੋ ਅਤੇ ਸੁਚੇਤ ਹੋ ਕੇ ਕੇਵਲ ਸ਼ਾਂਤ ਸਰੂਪ ਦਾ ਇੱਕ ਸੰਕਲਪ ਰਚੋ।',
   sankalp: 'I am a peaceful soul. I choose the quality of my thoughts.',
   sankalpHi: 'मैं शांत स्वरूप आत्मा हूँ। मैं अपने संकल्पों की स्वयं रचयिता हूँ।',
+  sankalpPa: 'ਮੈਂ ਸ਼ਾਂਤ ਸਰੂਪ ਆਤਮਾ ਹਾਂ। ਮੈਂ ਆਪਣੇ ਸੰਕਲਪਾਂ ਦੀ ਖ਼ੁਦ ਰਚੈਤਾ ਹਾਂ।',
   explanation: 'Keep your mind peaceful and see your own virtues. When you sit on the seat of the self-sovereign, waste thoughts instantly dissolve into stillness.',
   explanationHi: 'अपने मन को शांत रखें और अपने मूल गुणों का अनुभव करें। जब आप स्वराज्य अधिकारी बनते हैं तो व्यर्थ संकल्प स्वतः शांत हो जाते हैं।',
+  explanationPa: 'ਆਪਣੇ ਮਨ ਨੂੰ ਸ਼ਾਂਤ ਰੱਖੋ ਤੇ ਮੂਲ ਗੁਣਾਂ ਦਾ ਅਨੁਭਵ ਕਰੋ। ਜਦੋਂ ਤੁਸੀਂ ਸਵਰਾਜ ਅਧਿਕਾਰੀ ਬਣਦੇ ਹੋ ਤਾਂ ਵਿਅਰਥ ਸੰਕਲਪ ਖ਼ੁਦ ਸ਼ਾਂਤ ਹੋ ਜਾਂਦੇ ਹਨ।',
   murliReference: 'Avyakt BapDada Mahavakya (Madhuban)'
 };
 
@@ -29,6 +34,7 @@ export const INITIAL_DAILY_PRACTICES: DailyPracticeCheckItem[] = [
     id: 'meditation',
     name: 'Meditation',
     nameHi: 'राजयोग ध्यान',
+    namePa: 'ਰਾਜਯੋਗ ਧਿਆਨ',
     category: 'meditation',
     completed: true,
     timeEstimate: '15 min',
@@ -38,6 +44,7 @@ export const INITIAL_DAILY_PRACTICES: DailyPracticeCheckItem[] = [
     id: 'positive_thinking',
     name: 'Positive Thinking',
     nameHi: 'सकारात्मक चिंतन (स्वमान)',
+    namePa: 'ਸਕਾਰਾਤਮਕ ਚਿੰਤਨ (ਸਵਮਾਨ)',
     category: 'mind',
     completed: true,
     timeEstimate: '3 times'
@@ -46,6 +53,7 @@ export const INITIAL_DAILY_PRACTICES: DailyPracticeCheckItem[] = [
     id: 'self_review',
     name: 'Self-Review',
     nameHi: 'रात्रि आत्म-निरीक्षण',
+    namePa: 'ਰਾਤ ਦਾ ਆਤਮ-ਨਿਰੀਖਣ',
     category: 'review',
     completed: false,
     timeEstimate: '5 min'
@@ -54,6 +62,7 @@ export const INITIAL_DAILY_PRACTICES: DailyPracticeCheckItem[] = [
     id: 'amritvela',
     name: 'Amritvela Practice',
     nameHi: 'अमृतवेला योग',
+    namePa: 'ਅੰਮ੍ਰਿਤਵੇਲਾ ਯੋਗ',
     category: 'meditation',
     completed: true,
     timeEstimate: '3:30 AM',
@@ -63,6 +72,7 @@ export const INITIAL_DAILY_PRACTICES: DailyPracticeCheckItem[] = [
     id: 'traffic_control',
     name: 'Traffic Control (5 Pauses)',
     nameHi: 'ट्रैफिक कंट्रोल (5 बार)',
+    namePa: 'ਟ੍ਰੈਫਿਕ ਕੰਟਰੋਲ (5 ਵਾਰ)',
     category: 'mind',
     completed: true,
     timeEstimate: 'Every 3 hrs'
@@ -71,6 +81,7 @@ export const INITIAL_DAILY_PRACTICES: DailyPracticeCheckItem[] = [
     id: 'murli_study',
     name: 'Murli Study',
     nameHi: 'दैनिक ज्ञान मुरली श्रवण',
+    namePa: 'ਰੋਜ਼ਾਨਾ ਗਿਆਨ ਮੁਰਲੀ ਅਧਿਐਨ',
     category: 'study',
     completed: false,
     timeEstimate: '30 min'

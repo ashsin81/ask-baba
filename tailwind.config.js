@@ -66,9 +66,10 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'Noto Sans Devanagari', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'Noto Sans Devanagari', 'Noto Sans Gurmukhi', 'system-ui', 'sans-serif'],
         serif: ['Cinzel', 'Playfair Display', 'serif'],
-        hindi: ['Noto Sans Devanagari', 'sans-serif']
+        hindi: ['Noto Sans Devanagari', 'sans-serif'],
+        punjabi: ['Noto Sans Gurmukhi', 'sans-serif']
       },
       boxShadow: {
         'royal': '0 4px 20px -2px rgba(112, 35, 51, 0.08), 0 2px 6px -1px rgba(148, 114, 59, 0.06)',

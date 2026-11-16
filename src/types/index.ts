@@ -1,4 +1,4 @@
-export type Language = 'hi' | 'en' | 'hinglish';
+export type Language = 'en' | 'hi' | 'pa' | 'hinglish';
 export type ThemeMode = 'light' | 'dark' | 'midnight';
 
 export type AskBabaTab = 'home' | 'journey' | 'meditate' | 'discover' | 'you';
@@ -44,14 +44,19 @@ export interface TodayPurusharth {
   id: string;
   theme: string;
   themeHi?: string;
+  themePa?: string;
   thought: string;
   thoughtHi?: string;
+  thoughtPa?: string;
   practice: string;
   practiceHi?: string;
+  practicePa?: string;
   sankalp: string;
   sankalpHi?: string;
+  sankalpPa?: string;
   explanation: string;
   explanationHi?: string;
+  explanationPa?: string;
   murliReference?: string;
 }
 
@@ -59,6 +64,7 @@ export interface DailyPracticeCheckItem {
   id: string;
   name: string;
   nameHi: string;
+  namePa?: string;
   category: 'meditation' | 'mind' | 'study' | 'review';
   completed: boolean;
   timeEstimate?: string;
@@ -69,6 +75,7 @@ export interface SanskarItem {
   id: string;
   name: string;
   nameHi: string;
+  namePa?: string;
   icon: string;
   category: 'sanskars' | 'emotions' | 'thoughts';
   percentage: number;
